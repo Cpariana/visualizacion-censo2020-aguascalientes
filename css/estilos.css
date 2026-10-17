@@ -15,9 +15,7 @@ body {
 }
 
 
-/* =========================================================
-   PORTADA
-   ========================================================= */
+/* PORTADA  */
 
 .hero {
     background: #152b45;
@@ -53,19 +51,20 @@ body {
 }
 
 
-/* =========================================================
-   SECCIONES
-   ========================================================= */
+/*   SECCIONES */
 
 .seccion {
-    max-width: 1100px;
-    margin: auto;
-    padding: 80px 30px;
+    width: 100%;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 64px 56px;
+    box-sizing: border-box;
+    background: transparent;
 }
 
 .numero-seccion {
     margin-bottom: 8px;
-    font-size: 0.75rem;
+    font-size: 1.90rem;
     font-weight: bold;
     letter-spacing: 0.14em;
     color: #64748b;
@@ -87,39 +86,10 @@ h2 {
     color: #52606d;
 }
 
-
-.principio {
-    margin-top: 45px;
-    padding: 25px 30px;
-    border-left: 4px solid #345b82;
-    background: white;
+body {
+    background: #f5f7f9;
 }
 
-.principio span {
-    font-size: 0.75rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: #345b82;
-}
-
-.principio p {
-    margin-bottom: 0;
-    font-size: 1.05rem;
-}
-
-
-
-.explorador {
-    max-width: none;
-    background: white;
-}
-
-.explorador > * {
-    max-width: 1100px;
-    margin-left: auto;
-    margin-right: auto;
-}
 
 .botones {
     display: flex;
@@ -226,15 +196,29 @@ h2 {
     font-size: 2rem;
 }
 
+.principio {
+    margin-top: 45px;
+    padding: 25px 30px;
+    border-left: 4px solid #345b82;
+    background: white;
+}
 
-.seccion-estatica {
-    background: #ffffff;
+.principio span {
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #345b82;
+}
+
+.principio p {
+    margin-bottom: 0;
+    font-size: 1.05rem;
 }
 
 .grafica-estatica {
-    margin-top: 35px;
+    margin-top: 45px;
     padding: 25px;
-
     background: #ffffff;
     border: 1px solid #dfe4ea;
     border-radius: 10px;
@@ -242,20 +226,16 @@ h2 {
 
 .grafica-estatica img {
     display: block;
-
     width: 100%;
     max-width: 1050px;
     height: auto;
-
     margin: auto;
 }
 
 .interpretacion-estatica {
     max-width: 850px;
-
     margin-top: 25px;
     padding-left: 20px;
-
     border-left: 3px solid #345b82;
 
     color: #52606d;
