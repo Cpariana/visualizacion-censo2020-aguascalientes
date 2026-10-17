@@ -242,6 +242,8 @@ body {
     font-size: .95rem;
 }
 
+
+
 .datos-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
