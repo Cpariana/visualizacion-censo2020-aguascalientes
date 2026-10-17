@@ -1,0 +1,7 @@
+pandas 
+matplotlib 
+plotly 
+geopandas 
+nbformat>=4.2.0 
+ipython 
+jupyter

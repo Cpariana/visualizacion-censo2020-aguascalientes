@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Visualización Censo 2020 | Aguascalientes</title>
+
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+
+<body>
+
+<header class="hero">
+    <div class="hero-contenido">
+        <p class="etiqueta">CENSO DE POBLACIÓN Y VIVIENDA 2020</p>
+
+        <h1>
+            Exploración visual de patrones demográficos
+            para validaciones en captación censal
+        </h1>
+
+        <p class="subtitulo">
+            Aguascalientes · Cuestionario Ampliado
+        </p>
+    </div>
+</header>
+
+
+<main>
+
+    <section class="seccion introduccion">
+        <p class="numero-seccion">01 · EL PROYECTO</p>
+        <h2>¿Qué estamos explorando?</h2>
+        <p class="texto-principal">
+            Este proyecto explora patrones y combinaciones entre variables
+            demográficas y de captación como edad, discapacidad, escolaridad,
+            fecundidad y ubicación geográfica, con el propósito de identificar
+            comportamientos que puedan resultar relevantes para el diseño de
+            validaciones de universo, consistencia o contexto en aplicaciones
+            de captación censal.
+        </p>
+
+        <div class="principio">
+            <span>Principio de análisis</span>
+            <p>
+                Una combinación poco frecuente no necesariamente constituye
+                un error. Puede representar una inconsistencia, un caso que
+                requiere confirmación o un valor atípico válido.
+            </p>
+        </div>
+    </section>
+	
+	<section class="seccion seccion-estatica">
+    <div class="numero-seccion">
+        02 · VISUALIZACIÓN ESTÁTICA
+    </div>
+
+    <h2>Un primer patrón: fecundidad por edad</h2>
+
+    <p class="descripcion">
+        Como punto de partida, se analiza la proporción de mujeres
+        de 12 a 20 años con al menos un hijo nacido vivo. La
+        visualización permite identificar cómo cambia este patrón
+        conforme aumenta la edad.
+    </p>
+
+    <div class="grafica-estatica">
+        <img
+            src="visualizaciones/fecundidad_estatica.png"
+            alt="Porcentaje de mujeres de 12 a 20 años con al menos un hijo nacido vivo">
+    </div>
+
+    <p class="interpretacion-estatica">
+        La proporción observada aumenta con la edad y presenta un
+        crecimiento más marcado a partir de los 16 años. Esta
+        representación estática prioriza una lectura directa del
+        patrón mediante etiquetas, jerarquía visual y reducción de
+        elementos gráficos innecesarios.
+    </p>
+</section>
+
+    <section class="seccion explorador">
+        <p class="numero-seccion">03 · EXPLORA LOS RESULTADOS</p>
+        <h2>Selecciona una perspectiva</h2>
+        <p class="descripcion">
+            Las visualizaciones presentan diferentes perspectivas del análisis.
+            Selecciona una opción para explorar los resultados.
+        </p>
+        <div class="botones">
+            <button class="boton-grafica activo" onclick="mostrarGrafica('visualizaciones/fecundidad.html','Fecundidad y edad',this)">
+				Fecundidad
+            </button>
+            <button class="boton-grafica" onclick="mostrarGrafica('visualizaciones/discapacidad.html','Dificultad reportada por edad',this)">
+				Discapacidad
+			</button>
+            <button class="boton-grafica" onclick="mostrarGrafica('visualizaciones/territorio.html','Patrones territoriales',this)">
+				Territorio
+			</button>
+			<button class="boton-grafica"  onclick="mostrarTableau(this)">
+				Tablero BI
+			</button>
+        </div>
+
+        <div class="visualizacion">
+            <div class="encabezado-visualizacion">
+                <div>
+                    <span class="tipo">VISUALIZACIÓN INTERACTIVA</span>
+                    <h3 id="tituloGrafica">Fecundidad y edad</h3>
+                </div>
+                <span class="herramienta">Python · Plotly</span>
+            </div>
+            <div id="contenedorGrafica">
+                <iframe id="visorGrafica" src="visualizaciones/fecundidad.html" title="Visualización interactiva de fecundidad" loading="lazy">
+                </iframe>
+            </div>
+            <p class="ayuda">
+                Pasa el cursor sobre los puntos de la visualización para
+                consultar información adicional.
+            </p>
+        </div>
+    </section>
+
+    <section class="seccion datos">
+        <p class="numero-seccion">04 · ACERCA DE LOS DATOS</p>
+        <h2>Fuente y alcance</h2>
+        <div class="datos-grid">
+            <div>
+                <span class="dato-titulo">Fuente</span>
+                <p>INEGI. Censo de Población y Vivienda 2020.</p>
+            </div>
+            <div>
+                <span class="dato-titulo">Instrumento</span>
+                <p>Cuestionario Ampliado · Personas.</p>
+            </div>
+            <div>
+                <span class="dato-titulo">Ámbito</span>
+                <p>Aguascalientes.</p>
+            </div>
+            <div>
+                <span class="dato-titulo">Procesamiento</span>
+                <p>Python · pandas · Plotly.</p>
+            </div>
+        </div>
+    </section>
+</main>
+
+
+<footer>
+    <p>
+        Proyecto académico · Visualización de Datos
+    </p>
+</footer>
+
+<script>
+
+function mostrarGrafica(archivo, titulo, boton) {
+    const contenedor = document.getElementById("contenedorGrafica");
+    contenedor.innerHTML = `
+        <iframe
+            id="visorGrafica"
+            src="${archivo}"
+            title="${titulo}"
+            loading="lazy">
+        </iframe>
+    `;
+    document.getElementById("tituloGrafica").textContent = titulo;
+    document.querySelector(".herramienta").textContent ="Python · Plotly";
+    document.querySelector(".ayuda").textContent = "Pasa el cursor sobre los elementos de la visualización para consultar información adicional.";
+    activarBoton(boton);
+}
+
+function mostrarTableau(boton) {
+    const contenedor = document.getElementById("contenedorGrafica");
+    contenedor.innerHTML = `
+        <iframe
+            id="visorGrafica"
+            class="visor-tableau"
+            src="https://public.tableau.com/views/Patronesterritorialesdedificultadesreportadas-Aguascalientes/PatronesterritorialesdedificultadesreportadasenAguascalientes?:showVizHome=no&:embed=yes&:language=es-ES"
+            title="Tablero territorial de dificultades reportadas en Aguascalientes"
+            loading="lazy"
+            allowfullscreen>
+        </iframe>
+    `;
+    document.getElementById("tituloGrafica").textContent = "Tablero territorial";
+    document.querySelector(".herramienta").textContent ="Tableau Public";
+    document.querySelector(".ayuda").textContent = "Selecciona un municipio para actualizar el indicador global y consulta información mediante los elementos interactivos del tablero.";
+    activarBoton(boton);
+}
+
+function mostrarPendiente(nombre, boton) {
+    const contenedor = document.getElementById("contenedorGrafica");
+    contenedor.innerHTML = `
+        <div class="pendiente">
+            <span>PRÓXIMAMENTE</span>
+            <h3>${nombre}</h3>
+            <p>
+                Esta perspectiva se incorporará al explorador
+                en la siguiente etapa del proyecto.
+            </p>
+        </div>
+    `;
+    document.getElementById("tituloGrafica").textContent = nombre;
+    activarBoton(boton);
+}
+
+
+function activarBoton(boton) {
+    document
+        .querySelectorAll(".boton-grafica")
+        .forEach(b => b.classList.remove("activo"));
+    boton.classList.add("activo");
+}
+
+</script>
+
+</body>
+</html>
