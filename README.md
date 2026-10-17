@@ -150,8 +150,8 @@ Esto conserva la interactividad dentro del notebook.
 ## Publicación
 
 El repositorio público puede contener código, documentación,
-visualizaciones derivadas y el archivo municipal agregado. Los
-microdatos originales `Personas01.CSV` no se publican.
+visualizaciones derivadas, el archivo municipal agregado y los
+microdatos originales `Personas01.CSV` también fueron publicados.
 
 ## Herramientas
 
